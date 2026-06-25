@@ -1,9 +1,9 @@
-package com.infinitii.m4td.gps.data
+package br.com.nobrega.m4td.gps.data
 
 import android.content.Context
 import android.content.SharedPreferences
 
-import com.infinitii.m4td.gps.BuildConfig
+import br.com.nobrega.m4td.gps.BuildConfig
 
 /**
  * Persists user-editable CalTopo reporter config in SharedPreferences. The connect key

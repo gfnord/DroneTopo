@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps
+package br.com.nobrega.m4td.gps
 
 import android.app.Application
 import android.content.Context
@@ -17,8 +17,8 @@ import android.content.Context
 class App : Application() {
 
     // Initialized lazily on first access (typically from MainActivity / StreamingService).
-    val sdkManager: com.infinitii.m4td.gps.sdk.DjiSdkManager by lazy {
-        com.infinitii.m4td.gps.sdk.DjiSdkManager(this)
+    val sdkManager: br.com.nobrega.m4td.gps.sdk.DjiSdkManager by lazy {
+        br.com.nobrega.m4td.gps.sdk.DjiSdkManager(this)
     }
 
     override fun attachBaseContext(base: Context) {

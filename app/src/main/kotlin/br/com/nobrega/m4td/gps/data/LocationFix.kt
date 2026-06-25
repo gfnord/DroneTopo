@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.data
+package br.com.nobrega.m4td.gps.data
 
 import java.time.Instant
 
@@ -29,7 +29,7 @@ data class LocationFix(
 ) {
     /**
      * Heuristic invalid-fix filter. (0,0), NaN, infinities, or out-of-range values are rejected.
-     * Used by [com.infinitii.m4td.gps.sdk.AircraftLocationRepository] when
+     * Used by [br.com.nobrega.m4td.gps.sdk.AircraftLocationRepository] when
      * `skipInvalidFixes` is enabled.
      */
     val isValid: Boolean

@@ -1,12 +1,12 @@
-package com.infinitii.m4td.gps.ui
+package br.com.nobrega.m4td.gps.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.infinitii.m4td.gps.App
-import com.infinitii.m4td.gps.data.LocationFix
-import com.infinitii.m4td.gps.domain.SdkState
-import com.infinitii.m4td.gps.upload.ReportState
+import br.com.nobrega.m4td.gps.App
+import br.com.nobrega.m4td.gps.data.LocationFix
+import br.com.nobrega.m4td.gps.domain.SdkState
+import br.com.nobrega.m4td.gps.upload.ReportState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -29,7 +29,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val _streaming = MutableStateFlow(false)
     val streaming: StateFlow<Boolean> = _streaming.asStateFlow()
 
-    fun bindReportState(service: com.infinitii.m4td.gps.service.StreamingService) {
+    fun bindReportState(service: br.com.nobrega.m4td.gps.service.StreamingService) {
         _streaming.value = true
         viewModelScope.launch {
             service.state.collectLatest { _reportState.value = it }

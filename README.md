@@ -49,8 +49,8 @@ The DJI SDK requires an App Key tied to your package name.
 1. Create a developer account at <https://developer.dji.com>.
 2. Register a new app at <https://developer.dji.com/user/apps>.
 3. **The package name bound to the App Key MUST EXACTLY match `applicationId`.**
-   This project uses `applicationId = "com.infinitii.m4td.gps"`. Either:
-   - register the key against `com.infinitii.m4td.gps`, or
+   This project uses `applicationId = "br.com.nobrega.m4td.gps"`. Either:
+   - register the key against `br.com.nobrega.m4td.gps`, or
    - change `applicationId` in `app/build.gradle` (and `namespace` to match) **before**
      registering, and update the `applicationId` in your DJI developer app.
 4. Copy the generated **App Key** string.
@@ -293,7 +293,7 @@ App (Application)
 ## Field-test checklist
 
 1. **App Key & signing**
-   - [ ] App Key bound to `com.infinitii.m4td.gps` on developer.dji.com
+   - [ ] App Key bound to `br.com.nobrega.m4td.gps` on developer.dji.com
    - [ ] `gradle.properties` (`~/.gradle/gradle.properties`) has `AIRCRAFT_API_KEY`
    - [ ] `gradle.properties` has `STORE_FILE` / `STORE_PASSWORD` / `KEY_ALIAS` / `KEY_PASSWORD`
    - [ ] `./gradlew :app:assembleRelease` produces a signed APK

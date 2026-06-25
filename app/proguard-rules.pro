@@ -20,7 +20,7 @@
 -dontwarn kotlinx.coroutines.**
 
 # Keep our BuildConfig + data models
--keep class com.infinitii.m4td.gps.data.** { *; }
--keepclassmembers class com.infinitii.m4td.gps.** {
+-keep class br.com.nobrega.m4td.gps.data.** { *; }
+-keepclassmembers class br.com.nobrega.m4td.gps.** {
     public *;
 }

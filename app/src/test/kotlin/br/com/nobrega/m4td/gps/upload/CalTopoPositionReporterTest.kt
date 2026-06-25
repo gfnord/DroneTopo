@@ -1,7 +1,7 @@
-package com.infinitii.m4td.gps.upload
+package br.com.nobrega.m4td.gps.upload
 
-import com.infinitii.m4td.gps.data.CalTopoConfig
-import com.infinitii.m4td.gps.data.LocationFix
+import br.com.nobrega.m4td.gps.data.CalTopoConfig
+import br.com.nobrega.m4td.gps.data.LocationFix
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

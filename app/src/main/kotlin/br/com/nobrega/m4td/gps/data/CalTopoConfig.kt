@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.data
+package br.com.nobrega.m4td.gps.data
 
 /**
  * CalTopo Team "Shared Locations" reporter config.

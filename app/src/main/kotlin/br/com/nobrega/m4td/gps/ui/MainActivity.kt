@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.ui
+package br.com.nobrega.m4td.gps.ui
 
 import android.content.ComponentName
 import android.content.Context
@@ -13,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.infinitii.m4td.gps.R
-import com.infinitii.m4td.gps.data.LocationFix
-import com.infinitii.m4td.gps.databinding.ActivityMainBinding
-import com.infinitii.m4td.gps.domain.SdkPhase
-import com.infinitii.m4td.gps.domain.SdkState
-import com.infinitii.m4td.gps.service.StreamingService
-import com.infinitii.m4td.gps.upload.ReportState
+import br.com.nobrega.m4td.gps.R
+import br.com.nobrega.m4td.gps.data.LocationFix
+import br.com.nobrega.m4td.gps.databinding.ActivityMainBinding
+import br.com.nobrega.m4td.gps.domain.SdkPhase
+import br.com.nobrega.m4td.gps.domain.SdkState
+import br.com.nobrega.m4td.gps.service.StreamingService
+import br.com.nobrega.m4td.gps.upload.ReportState
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date

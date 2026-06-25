@@ -23,12 +23,12 @@ def resolveInt = { String key, int fallback ->
 def djiVersion = '5.18.0'
 
 android {
-    namespace "com.infinitii.m4td.gps"
+    namespace "br.com.nobrega.m4td.gps"
     compileSdkVersion resolveInt('ANDROID_COMPILE_SDK_VERSION', 35)
     ndkVersion resolveString('NDK_VERSION', '21.4.7075529')
 
     defaultConfig {
-        applicationId "com.infinitii.m4td.gps"   // MUST match the package bound to the DJI App Key
+        applicationId "br.com.nobrega.m4td.gps"   // MUST match the package bound to the DJI App Key
         minSdkVersion resolveInt('ANDROID_MIN_SDK_VERSION', 24)
         targetSdkVersion resolveInt('ANDROID_TARGET_SDK_VERSION', 35)
         versionCode 1

@@ -1,8 +1,8 @@
-package com.infinitii.m4td.gps.sdk
+package br.com.nobrega.m4td.gps.sdk
 
 import android.content.Context
-import com.infinitii.m4td.gps.domain.SdkPhase
-import com.infinitii.m4td.gps.domain.SdkState
+import br.com.nobrega.m4td.gps.domain.SdkPhase
+import br.com.nobrega.m4td.gps.domain.SdkState
 import dji.sdk.keyvalue.KeyTools
 import dji.sdk.keyvalue.key.DJIKey
 import dji.sdk.keyvalue.key.ProductKey
@@ -38,12 +38,12 @@ class DjiSdkManager(private val context: Context) {
     private val _state = MutableStateFlow(SdkState())
     val state: StateFlow<SdkState> = _state.asStateFlow()
 
-    /** Lazily created so first access from [com.infinitii.m4td.gps.App] doesn't block. */
+    /** Lazily created so first access from [br.com.nobrega.m4td.gps.App] doesn't block. */
     val repository: AircraftLocationRepository by lazy { AircraftLocationRepository(this, context) }
 
     @Volatile private var started = false
 
-    /** Idempotent — safe to call from [com.infinitii.m4td.gps.App.onCreate]. */
+    /** Idempotent — safe to call from [br.com.nobrega.m4td.gps.App.onCreate]. */
     fun start() {
         if (started) return
         started = true

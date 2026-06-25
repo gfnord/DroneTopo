@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.service
+package br.com.nobrega.m4td.gps.service
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -12,15 +12,15 @@ import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import com.infinitii.m4td.gps.App
-import com.infinitii.m4td.gps.R
-import com.infinitii.m4td.gps.data.CalTopoConfig
-import com.infinitii.m4td.gps.data.LocationFix
-import com.infinitii.m4td.gps.data.SettingsStore
-import com.infinitii.m4td.gps.sdk.AircraftLocationRepository
-import com.infinitii.m4td.gps.ui.MainActivity
-import com.infinitii.m4td.gps.upload.CalTopoPositionReporter
-import com.infinitii.m4td.gps.upload.ReportState
+import br.com.nobrega.m4td.gps.App
+import br.com.nobrega.m4td.gps.R
+import br.com.nobrega.m4td.gps.data.CalTopoConfig
+import br.com.nobrega.m4td.gps.data.LocationFix
+import br.com.nobrega.m4td.gps.data.SettingsStore
+import br.com.nobrega.m4td.gps.sdk.AircraftLocationRepository
+import br.com.nobrega.m4td.gps.ui.MainActivity
+import br.com.nobrega.m4td.gps.upload.CalTopoPositionReporter
+import br.com.nobrega.m4td.gps.upload.ReportState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -53,11 +53,11 @@ class StreamingService : Service() {
     private lateinit var settings: SettingsStore
 
     @Volatile private var config: CalTopoConfig = CalTopoConfig(
-        baseUrl = com.infinitii.m4td.gps.BuildConfig.DEFAULT_CALTOPO_BASE_URL,
-        connectKey = com.infinitii.m4td.gps.BuildConfig.DEFAULT_CALTOPO_CONNECT_KEY,
-        deviceId = com.infinitii.m4td.gps.BuildConfig.DEFAULT_DEVICE_ID,
-        reportIntervalSeconds = com.infinitii.m4td.gps.BuildConfig.DEFAULT_CALTOPO_REPORT_INTERVAL_SECONDS.toLong(),
-        skipInvalidFixes = com.infinitii.m4td.gps.BuildConfig.DEFAULT_SKIP_INVALID_FIXES,
+        baseUrl = br.com.nobrega.m4td.gps.BuildConfig.DEFAULT_CALTOPO_BASE_URL,
+        connectKey = br.com.nobrega.m4td.gps.BuildConfig.DEFAULT_CALTOPO_CONNECT_KEY,
+        deviceId = br.com.nobrega.m4td.gps.BuildConfig.DEFAULT_DEVICE_ID,
+        reportIntervalSeconds = br.com.nobrega.m4td.gps.BuildConfig.DEFAULT_CALTOPO_REPORT_INTERVAL_SECONDS.toLong(),
+        skipInvalidFixes = br.com.nobrega.m4td.gps.BuildConfig.DEFAULT_SKIP_INVALID_FIXES,
     )
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -248,8 +248,8 @@ class StreamingService : Service() {
     }
 
     companion object {
-        const val ACTION_START = "com.infinitii.m4td.gps.action.START"
-        const val ACTION_STOP = "com.infinitii.m4td.gps.action.STOP"
+        const val ACTION_START = "br.com.nobrega.m4td.gps.action.START"
+        const val ACTION_STOP = "br.com.nobrega.m4td.gps.action.STOP"
         private const val NOTIF_ID = 0xC0DE
     }
 }

@@ -1,9 +1,9 @@
-package com.infinitii.m4td.gps.sdk
+package br.com.nobrega.m4td.gps.sdk
 
 import android.content.Context
-import com.infinitii.m4td.gps.data.AltitudeReference
-import com.infinitii.m4td.gps.data.LocationFix
-import com.infinitii.m4td.gps.data.SettingsStore
+import br.com.nobrega.m4td.gps.data.AltitudeReference
+import br.com.nobrega.m4td.gps.data.LocationFix
+import br.com.nobrega.m4td.gps.data.SettingsStore
 import dji.sdk.keyvalue.KeyTools
 import dji.sdk.keyvalue.key.DJIKey
 import dji.sdk.keyvalue.key.FlightControllerKey
@@ -48,7 +48,7 @@ class AircraftLocationRepository(
     @Volatile private var listening = false
     private val holder = Any()
 
-    @Volatile private var cfgCache: com.infinitii.m4td.gps.data.CalTopoConfig = settings.load()
+    @Volatile private var cfgCache: br.com.nobrega.m4td.gps.data.CalTopoConfig = settings.load()
 
     fun refreshConfig() { cfgCache = settings.load() }
 

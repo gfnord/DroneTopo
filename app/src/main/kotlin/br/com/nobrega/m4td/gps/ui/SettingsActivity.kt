@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.ui
+package br.com.nobrega.m4td.gps.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,15 +6,15 @@ import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.infinitii.m4td.gps.R
-import com.infinitii.m4td.gps.data.CalTopoConfig
-import com.infinitii.m4td.gps.data.SettingsStore
+import br.com.nobrega.m4td.gps.R
+import br.com.nobrega.m4td.gps.data.CalTopoConfig
+import br.com.nobrega.m4td.gps.data.SettingsStore
 
 /**
  * CalTopo reporter settings. Backed by SharedPreferences via [SettingsStore].
  *
  * On any change the full [CalTopoConfig] is re-persisted; the live
- * [com.infinitii.m4td.gps.service.StreamingService] picks up the new config on its next
+ * [br.com.nobrega.m4td.gps.service.StreamingService] picks up the new config on its next
  * tick (the ticker reads `config` per-iteration) and on `onResume` via `reloadConfig()`.
  */
 class SettingsActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.infinitii.m4td.gps.domain
+package br.com.nobrega.m4td.gps.domain
 
 /**
  * High-level phase of the DJI SDK lifecycle, exposed to the UI.

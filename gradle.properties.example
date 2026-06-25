@@ -26,7 +26,7 @@ DEFAULT_SKIP_INVALID_FIXES=true
 # and fill in real values. The example below is intentionally blank.
 #
 # DJI App Key. The package name bound to this key on developer.dji.com MUST exactly
-# match `applicationId` ("com.infinitii.m4td.gps"). First launch requires internet
+# match `applicationId` ("br.com.nobrega.m4td.gps"). First launch requires internet
 # for registration; afterwards the registration is cached on-device.
 AIRCRAFT_API_KEY=
 
