@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Default: require HTTPS for the upload endpoint. -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <!--
+        Field deployments sometimes target an on-prem / LAN endpoint with a self-signed cert.
+        If you must allow that, uncomment and scope it to your specific host. Avoid broad
+        cleartext permisions; prefer importing the self-signed cert into the user CA store.
+    -->
+    <!--
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">tracking.internal.example</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    -->
+</network-security-config>

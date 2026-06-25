@@ -1,0 +1,24 @@
+# Built artifacts
+build/
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+captures/
+
+# Native build outputs
+.cxx/
+
+# Agent internal state
+.omo/
+.codegraph/
+
+# Secrets / signing material (NEVER commit)
+keystore/
+*.jks
+*.keystore
+!gradle.properties.example
+!local.properties.example
+
+# App-specific signing material placed next to project
+m4td.jks

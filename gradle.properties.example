@@ -1,0 +1,42 @@
+# --- Build toolchain (mirrors the DJI MSDK V5 5.18.0 sample's gradle.properties) ---
+org.gradle.jvmargs=-Xmx4G -Dfile.encoding=UTF-8
+org.gradle.parallel=true
+org.gradle.caching=true
+android.useAndroidX=true
+android.nonTransitiveRClass=true
+android.nonFinalResIds=false
+
+# Android / Kotlin / NDK versions pinned by the spec.
+ANDROID_MIN_SDK_VERSION=24
+ANDROID_TARGET_SDK_VERSION=35
+ANDROID_COMPILE_SDK_VERSION=35
+KOTLIN_VERSION=2.1.0
+NDK_VERSION=21.4.7075529
+
+# --- CalTopo integration defaults ---
+DEFAULT_CALTOPO_BASE_URL=https://caltopo.com
+DEFAULT_CALTOPO_REPORT_INTERVAL_SECONDS=5
+DEFAULT_DEVICE_ID=M4TD-01
+DEFAULT_SKIP_INVALID_FIXES=true
+
+# --- Secrets & signing (NEVER commit real values). ---
+# Copy this file to one of:
+#   - ~/.gradle/gradle.properties   (user-global, recommended for secrets)
+#   - local.properties              (project-local; already gitignored by convention)
+# and fill in real values. The example below is intentionally blank.
+#
+# DJI App Key. The package name bound to this key on developer.dji.com MUST exactly
+# match `applicationId` ("com.infinitii.m4td.gps"). First launch requires internet
+# for registration; afterwards the registration is cached on-device.
+AIRCRAFT_API_KEY=
+
+# CalTopo connect key (shared secret — see README; treat like a password).
+# Generate via CalTopo: Team Admin -> Trackable Devices -> Create New Access URL.
+DEFAULT_CALTOPO_CONNECT_KEY=
+
+# Signing keystore (the sample signs BOTH debug and release with a release keystore
+# so signed builds install/run cleanly on the RC Plus 2 controller).
+STORE_FILE=../keystore/m4td.jks
+STORE_PASSWORD=
+KEY_ALIAS=
+KEY_PASSWORD=

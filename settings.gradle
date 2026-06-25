@@ -1,0 +1,20 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+        // DJI MSDK V5 artifacts (com.dji:dji-sdk-v5-*) are published to Maven Central.
+        // No jcenter / Bintray Kotlin-EAP repos — they are defunct and unnecessary on 5.18.0.
+    }
+}
+
+rootProject.name = "DroneTopo"
+include ':app'

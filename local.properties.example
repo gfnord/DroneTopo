@@ -1,0 +1,20 @@
+# Copy to local.properties and fill in. NEVER commit local.properties.
+# Path to your local Android SDK install.
+sdk.dir=/home/YOUR_USER/Android/Sdk
+
+# --- Secrets (mirror gradle.properties.example) ---
+# DJI App Key (the bound package name must equal applicationId "com.infinitii.m4td.gps").
+AIRCRAFT_API_KEY=
+
+# Default CalTopo config injected into BuildConfig. Override at runtime via Settings UI.
+DEFAULT_CALTOPO_BASE_URL=https://caltopo.com
+DEFAULT_CALTOPO_CONNECT_KEY=
+DEFAULT_DEVICE_ID=M4TD-01
+DEFAULT_CALTOPO_REPORT_INTERVAL_SECONDS=5
+DEFAULT_SKIP_INVALID_FIXES=true
+
+# Signing (use ~/.gradle/gradle.properties for these in real setups).
+STORE_FILE=../keystore/m4td.jks
+STORE_PASSWORD=
+KEY_ALIAS=
+KEY_PASSWORD=

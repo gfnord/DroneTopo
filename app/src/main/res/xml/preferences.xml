@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/settings_category_caltopo">
+
+        <EditTextPreference
+            app:key="caltopo_base_url"
+            app:title="@string/settings_base_url_title"
+            app:summary="@string/settings_base_url_summary"
+            app:defaultValue="https://caltopo.com" />
+
+        <EditTextPreference
+            app:key="caltopo_connect_key"
+            app:title="@string/settings_connect_key_title"
+            app:summary="@string/settings_connect_key_summary"
+            app:defaultValue="" />
+
+        <EditTextPreference
+            app:key="device_id"
+            app:title="@string/settings_device_id_title"
+            app:summary="@string/settings_device_id_summary"
+            app:defaultValue="M4TD-01" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settings_category_runtime">
+
+        <EditTextPreference
+            app:key="report_interval_seconds"
+            app:title="@string/settings_report_interval_title"
+            app:summary="@string/settings_report_interval_summary"
+            app:defaultValue="5" />
+
+        <SwitchPreferenceCompat
+            app:key="skip_invalid_fixes"
+            app:title="@string/settings_skip_invalid_title"
+            app:summary="@string/settings_skip_invalid_summary"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

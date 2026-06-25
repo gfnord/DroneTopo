@@ -1,0 +1,35 @@
+// Top-level build file. Plugin versions are pinned to match the DJI MSDK V5 5.18.0
+// official sample (github.com/dji-sdk/Mobile-SDK-Android-V5) so the SDK's transitive
+// requirements are satisfied. AGP 8.7.0 / Kotlin 2.1.0 / Gradle 8.9.
+buildscript {
+    ext {
+        agpVersion       = '8.7.0'
+        kotlinVersion    = '2.1.0'
+        coreKtxVersion   = '1.13.1'
+        appcompatVersion = '1.7.0'
+        materialVersion  = '1.12.0'
+        lifecycleVersion = '2.8.4'
+        coroutinesVersion= '1.8.1'
+        okhttpVersion    = '4.12.0'
+        djiVersion       = '5.18.0'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${agpVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="@string/app_name"
+            app:titleTextColor="#FFFFFFFF"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+        <TextView
+            style="@style/StatusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_sdk_phase" />
+
+        <TextView
+            android:id="@+id/tv_sdk_phase"
+            style="@style/StatusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="REGISTERED / init 100% / no aircraft"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:id="@+id/tv_sdk_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bad"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="Registration failed: INVALID_APP_KEY"
+            tools:visibility="visible"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            style="@style/StatusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_connection" />
+
+        <TextView
+            android:id="@+id/tv_connection"
+            style="@style/StatusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Connected (productId=12345, Matrice 4TD)"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            style="@style/StatusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_location" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/StatusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="49.3237, -117.6593  alt=142.5m (takeoff)  sats=18  sig=LEVEL_5"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            style="@style/StatusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_call_sign" />
+
+        <TextView
+            android:id="@+id/tv_call_sign"
+            style="@style/StatusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            tools:text="SARTRUCKS-M4TD-01"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            style="@style/StatusLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/label_report" />
+
+        <TextView
+            android:id="@+id/tv_report"
+            style="@style/StatusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="HTTP 200 · ok=42 fail=0 · last=12:05:31Z"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:id="@+id/tv_report_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/warn"
+            android:visibility="gone"
+            tools:text="(3x) CalTopo HTTP 502"
+            tools:visibility="visible"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_start_streaming" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_settings"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/action_settings" />
+
+    </LinearLayout>
+</ScrollView>
