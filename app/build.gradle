@@ -161,4 +161,8 @@ dependencies {
 
     // Networking
     implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+
+    // --- Unit tests (pure-JVM) ---
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "com.squareup.okhttp3:mockwebserver:${rootProject.ext.okhttpVersion}"
 }

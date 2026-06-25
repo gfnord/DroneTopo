@@ -3,7 +3,9 @@ package com.infinitii.m4td.gps.sdk
 import android.content.Context
 import com.infinitii.m4td.gps.domain.SdkPhase
 import com.infinitii.m4td.gps.domain.SdkState
+import dji.sdk.keyvalue.KeyTools
 import dji.sdk.keyvalue.key.DJIKey
+import dji.sdk.keyvalue.key.ProductKey
 import dji.v5.common.error.IDJIError
 import dji.v5.common.register.DJISDKInitEvent
 import dji.v5.manager.KeyManager
@@ -73,6 +75,7 @@ class DjiSdkManager(private val context: Context) {
                     )
                 }
                 scope.launch { repository.start() }
+                fetchModelName()
             }
 
             override fun onProductDisconnect(productId: Int) {
@@ -96,6 +99,16 @@ class DjiSdkManager(private val context: Context) {
         val code = try { error.errorCode() } catch (_: Throwable) { "?" }
         val desc = try { error.description() } catch (_: Throwable) { "" }
         return if (desc.isNullOrBlank()) "code=$code" else "$code: $desc"
+    }
+
+    private fun fetchModelName() {
+        runCatching {
+            val key = KeyTools.createKey(ProductKey.KeyProductType)
+            val type = KeyManager.getInstance().getValue(key)
+            if (type != null) {
+                transition { copy(modelName = type.toString()) }
+            }
+        }
     }
 
     @Synchronized

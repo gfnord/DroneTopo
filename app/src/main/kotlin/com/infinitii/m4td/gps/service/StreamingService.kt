@@ -35,6 +35,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
+import java.time.Duration
+import java.time.Instant
 import java.util.concurrent.TimeUnit
 
 /**
@@ -98,33 +100,52 @@ class StreamingService : Service() {
     }
 
     fun reloadConfig() {
-        config = settings.load()
+        val newCfg = settings.load()
+        val intervalChanged = newCfg.reportIntervalSeconds != config.reportIntervalSeconds
+        config = newCfg
         _state.update { it.copy(activeConfig = config) }
+        repository.refreshConfig()
+        if (intervalChanged && tickerJob != null) startTicker()
     }
 
     private fun startStreaming() {
         if (tickerJob != null) return
-        repository.start()
         collectJob = scope.launch {
             repository.latestFix.collect { fix -> latestFix = fix }
         }
-        tickerJob = scope.launch {
-            while (scope.isActive) {
-                delay(config.reportIntervalSeconds * 1000L)
-                tickOnce()
-            }
-        }
+        startTicker()
         _state.update { it.copy(running = true) }
         scope.launch {
             _state.collect { st -> updateNotification(st) }
         }
     }
 
+    private fun startTicker() {
+        tickerJob?.cancel()
+        tickerJob = scope.launch {
+            while (isActive) {
+                delay(config.reportIntervalSeconds * 1000L)
+                tickOnce()
+            }
+        }
+    }
+
+    private fun staleThresholdMs(cfg: CalTopoConfig): Long =
+        maxOf(cfg.reportIntervalSeconds * 3L, 10L) * 1000L
+
     private suspend fun tickOnce() {
         val cfg = config
         if (cfg.connectKey.isBlank() || cfg.deviceId.isBlank()) return
         val fix = latestFix ?: return
         if (cfg.skipInvalidFixes && !fix.isValid) return
+
+        val ageMs = runCatching {
+            Duration.between(Instant.parse(fix.timestamp), Instant.now()).toMillis()
+        }.getOrDefault(0L)
+        if (ageMs > staleThresholdMs(cfg)) {
+            _state.update { it.copy(fixStale = true) }
+            return
+        }
 
         val reporter = CalTopoPositionReporter(client, cfg)
         val result = withContext(Dispatchers.IO) { reporter.report(fix) }
@@ -138,6 +159,7 @@ class StreamingService : Service() {
                         consecutiveFailures = 0,
                         lastError = null,
                         lastReportedFix = fix,
+                        fixStale = false,
                     )
                 }
             },
@@ -148,6 +170,7 @@ class StreamingService : Service() {
                         failureCount = it.failureCount + 1,
                         consecutiveFailures = it.consecutiveFailures + 1,
                         lastError = e.message ?: e.javaClass.simpleName,
+                        fixStale = false,
                     )
                 }
             },
@@ -157,9 +180,8 @@ class StreamingService : Service() {
     private fun stopStreaming() {
         collectJob?.cancel(); collectJob = null
         tickerJob?.cancel(); tickerJob = null
-        repository.stop()
         latestFix = null
-        _state.update { it.copy(running = false) }
+        _state.update { it.copy(running = false, fixStale = false) }
     }
 
     override fun onDestroy() {
@@ -191,6 +213,7 @@ class StreamingService : Service() {
     private fun updateNotification(state: ReportState) {
         val text = when {
             state.configIncomplete -> getString(R.string.notif_text_no_config)
+            state.fixStale -> getString(R.string.notif_text_stale)
             state.consecutiveFailures > 0 && state.lastError != null ->
                 getString(R.string.notif_text_fail, state.lastError)
             state.lastHttpStatus != null && state.successCount > 0 ->

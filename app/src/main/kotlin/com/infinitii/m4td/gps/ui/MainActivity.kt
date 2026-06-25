@@ -167,9 +167,11 @@ class MainActivity : AppCompatActivity() {
             append(" · last=$lastTime")
         }
         binding.tvReportError.apply {
-            text = if (st.consecutiveFailures > 0 && st.lastError != null) {
-                "(${st.consecutiveFailures}x) ${st.lastError}"
-            } else null
+            text = when {
+                st.fixStale -> getString(R.string.report_stale_paused)
+                st.consecutiveFailures > 0 && st.lastError != null -> "(${st.consecutiveFailures}x) ${st.lastError}"
+                else -> null
+            }
             visibility = if (text.isNullOrBlank()) View.GONE else View.VISIBLE
         }
     }

@@ -20,6 +20,7 @@
     <string name="notif_text_active">Reporting as %1$s</string>
     <string name="notif_text_fail">Report failed: %1$s</string>
     <string name="notif_text_no_config">Connect key / device id not set</string>
+    <string name="notif_text_stale">GPS fix stale — reporting paused</string>
 
     <string name="settings_category_caltopo">CalTopo connection</string>
     <string name="settings_category_runtime">Runtime behaviour</string>
@@ -37,4 +38,5 @@
     <string name="empty_no_fix">Waiting for first GPS fix…</string>
     <string name="empty_no_connection">Aircraft not connected</string>
     <string name="report_no_config">Set connect key + device id in Settings</string>
+    <string name="report_stale_paused">GPS fix stale — reporting paused (aircraft not updating position)</string>
 </resources>

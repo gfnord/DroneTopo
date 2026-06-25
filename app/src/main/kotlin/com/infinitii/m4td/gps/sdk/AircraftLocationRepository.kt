@@ -48,9 +48,14 @@ class AircraftLocationRepository(
     @Volatile private var listening = false
     private val holder = Any()
 
+    @Volatile private var cfgCache: com.infinitii.m4td.gps.data.CalTopoConfig = settings.load()
+
+    fun refreshConfig() { cfgCache = settings.load() }
+
     fun start() {
         if (listening) return
         listening = true
+        refreshConfig()
         try {
             val locKey: DJIKey<LocationCoordinate3D> =
                 KeyTools.createKey(FlightControllerKey.KeyAircraftLocation3D)
@@ -71,7 +76,7 @@ class AircraftLocationRepository(
             val sigKey: DJIKey<GPSSignalLevel> =
                 KeyTools.createKey(FlightControllerKey.KeyGPSSignalLevel)
             sdk.listenForKey(sigKey, holder) { _, new ->
-                synchronized(this) { raw = raw.copy(signal = new?.name()) }
+                synchronized(this) { raw = raw.copy(signal = new?.name) }
                 emitIfReady()
             }
         } catch (_: Throwable) {
@@ -96,7 +101,7 @@ class AircraftLocationRepository(
     private fun emitIfReady() {
         val r = raw
         val loc = r.loc ?: return
-        val cfg = settings.load()
+        val cfg = cfgCache
         val fix = LocationFix(
             deviceId = cfg.deviceId,
             lat = loc.latitude,

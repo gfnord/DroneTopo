@@ -17,6 +17,7 @@ data class ReportState(
     val consecutiveFailures: Int = 0,
     val lastError: String? = null,
     val lastReportedFix: LocationFix? = null,
+    val fixStale: Boolean = false,
 ) {
     val callSign: String get() = activeConfig.callSign
     val configIncomplete: Boolean
