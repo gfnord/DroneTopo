@@ -4,7 +4,7 @@ import android.content.Context
 import br.com.nobrega.m4td.gps.data.AltitudeReference
 import br.com.nobrega.m4td.gps.data.LocationFix
 import br.com.nobrega.m4td.gps.data.SettingsStore
-import dji.sdk.keyvalue.KeyTools
+import dji.sdk.keyvalue.key.KeyTools
 import dji.sdk.keyvalue.key.DJIKey
 import dji.sdk.keyvalue.key.FlightControllerKey
 import dji.sdk.keyvalue.value.common.LocationCoordinate3D

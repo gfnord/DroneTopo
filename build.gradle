@@ -3,7 +3,7 @@
 // requirements are satisfied. AGP 8.7.0 / Kotlin 2.1.0 / Gradle 8.9.
 buildscript {
     ext {
-        agpVersion       = '8.7.0'
+        agpVersion       = '8.13.2'
         kotlinVersion    = '2.1.0'
         coreKtxVersion   = '1.13.1'
         appcompatVersion = '1.7.0'

@@ -3,7 +3,7 @@ package br.com.nobrega.m4td.gps.sdk
 import android.content.Context
 import br.com.nobrega.m4td.gps.domain.SdkPhase
 import br.com.nobrega.m4td.gps.domain.SdkState
-import dji.sdk.keyvalue.KeyTools
+import dji.sdk.keyvalue.key.KeyTools
 import dji.sdk.keyvalue.key.DJIKey
 import dji.sdk.keyvalue.key.ProductKey
 import dji.v5.common.error.IDJIError

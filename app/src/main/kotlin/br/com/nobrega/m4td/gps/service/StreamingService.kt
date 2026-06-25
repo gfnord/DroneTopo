@@ -220,7 +220,7 @@ class StreamingService : Service() {
                 getString(R.string.notif_text_active, state.callSign)
             else -> getString(R.string.notif_text_idle)
         }
-        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
             .notify(NOTIF_ID, buildNotificationText(text))
     }
 
